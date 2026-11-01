@@ -140,6 +140,7 @@ async function submit(){
  if(!window.QUIZ2_CONFIG?.enabled||!validUrl(url())){
   $("submit-status").textContent="Innlevering til Google Sheets er ikke aktivert ennå. Last ned svarene som sikkerhetskopi.";return;
  }
+ locallyCalculated();
  const receipt=state.receipt||crypto.randomUUID();state.receipt=receipt;store();
  const button=$("submit");button.disabled=true;
  $("submit-status").textContent="Sender besvarelsen til Google Sheets …";
