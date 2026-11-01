@@ -162,12 +162,29 @@ function doGet(e) {
   const p = (e && e.parameter) || {};
   const prefix = String(p.prefix || '');
   const receipt = String(p.receipt || '');
-  if (p.action !== 'result' || !/^quiz2_cb_[a-zA-Z0-9_]{8,48}$/.test(prefix)) {
+  if (!['result', 'check'].includes(p.action) || !/^quiz2_cb_[a-zA-Z0-9_]{8,48}$/.test(prefix)) {
     return output_('INVALID');
   }
   let result = {status: 'pending'};
   try {
-    if (RECEIPT_PATTERN.test(receipt)) {
+    if (p.action === 'check') {
+      const number = Number(p.number);
+      const choice = String(p.choice || '');
+      if (Number.isInteger(number) && number >= 1 && number <= QUIZ_LENGTH &&
+          /^[A-D]$/.test(choice)) {
+        const key = quizKey_(SpreadsheetApp.getActiveSpreadsheet());
+        const item = key[number - 1];
+        result = {
+          status: 'checked',
+          number: number,
+          selected: choice,
+          isCorrect: choice === item.correct,
+          correct: item.correct,
+          correctText: item.correctText,
+          explanation: item.explanation
+        };
+      }
+    } else if (RECEIPT_PATTERN.test(receipt)) {
       const ss = SpreadsheetApp.getActiveSpreadsheet();
       const sheet = ss.getSheetByName(QUIZ_SHEET);
       if (sheet && sheet.getLastRow() > 1) {
