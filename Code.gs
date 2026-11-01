@@ -11,6 +11,9 @@ const ESSAY_SHEET = 'Besvarelser';
 const QUIZ_SHEET = 'Flervalg 2';
 const KEY_SHEET = 'Fasit flervalg 2';
 const QUIZ_LENGTH = 32;
+// Egen sikkerhetsgrense for e-postsendere per rullerende 24 timer.
+// Google sin faktiske kvote kontrolleres separat med MailApp.getRemainingDailyQuota().
+const MAX_EMAILS_PER_24H = 90;
 const RECEIPT_PATTERN = /^[a-f0-9-]{36}$/i;
 const EMAIL_PATTERN = /^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/;
 
@@ -111,7 +114,7 @@ function doPost(e) {
         now - r[0].getTime() >= 0 && now - r[0].getTime() < 86400000);
       const toThisEmail = today.filter(r => String(r[37]).toLowerCase() === email).length;
       const sentToday = today.filter(r => r[38] === 'SENT').length;
-      if (toThisEmail > 2 || sentToday >= 40) {
+      if (toThisEmail > 2 || sentToday >= MAX_EMAILS_PER_24H) {
         emailStatus = 'LIMIT';
       } else if (MailApp.getRemainingDailyQuota() < 1) {
         emailStatus = 'QUOTA';
