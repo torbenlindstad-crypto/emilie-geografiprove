@@ -125,7 +125,7 @@ async function resultLookup(receipt){
   if(i<7)await delay(1000+i*500);
  }return null;
 }
-function confirmed(result,receipt){state.result=result;state.receipt=receipt;state.stage="done";store();show();$("results").scrollIntoView({behavior:"smooth"})}
+function confirmed(result,receipt){const label=$("results").querySelector(".results-eyebrow");if(label)label.textContent="BEKREFTET INNLEVERT";state.result=result;state.receipt=receipt;state.stage="done";store();show();$("results").scrollIntoView({behavior:"smooth"})}
 async function submit(){
  store();
  if(state.stage!=="delivery")return;
