@@ -148,7 +148,7 @@ async function submit(){
   $("submit-status").textContent="Sjekker at innleveringen er registrert …";
   const result=await resultLookup(receipt);
   if(result)confirmed(result,receipt);
-  else $("submit-status").textContent="Google har ikke bekreftet innleveringen ennå. Last ned en sikkerhetskopi og forsøk igjen med samme kvittering.";
+  else {$("submit-status").textContent="Mottak er ikke bekreftet. Prosenten nedenfor er beregnet lokalt.";locallyCalculated();}
  }catch(err){$("submit-status").textContent="Kunne ikke bekrefte innleveringen. Last ned en sikkerhetskopi."}
  finally{button.disabled=false}
 }
