@@ -99,6 +99,7 @@ function show(){
  updateProgress();
  if(state.stage==="quiz")renderQuestion();
  if(state.stage==="done")renderResults();
+ if(state.stage==="delivery"&&state.receipt)locallyCalculated();
 }
 function next(){
  const q=questions[state.index];
