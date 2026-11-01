@@ -77,6 +77,7 @@ function renderQuestion(){
  panel.append(el("p","why","Hvorfor: "+known.explanation));
  next.hidden=false;next.textContent=q.number===questions.length?"Gå til innlevering":"Neste spørsmål";
 }
+function locallyCalculated(){const right=questions.reduce((n,q)=>n+(state.choices[q.number]===LOCAL_FEEDBACK[q.number-1].c?1:0),0);$("results").hidden=false;$("score").textContent=Math.round(100*right/questions.length)+" %";$("score-detail").textContent=right+" av "+questions.length+" riktig. Dette er beregnet lokalt.";$("email-status").textContent="Innleveringen er ikke bekreftet lagret hos Google. Last ned svarene som sikkerhetskopi.";}
 function renderResults(){
  const result=state.result;
  if(!result||result.status!=="ready")return;
