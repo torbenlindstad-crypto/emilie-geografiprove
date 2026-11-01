@@ -22,3 +22,24 @@
 .review-explanation{margin:10px 0 0;color:#405f69;line-height:1.62}
 @media(max-width:640px){.identity-fields{grid-template-columns:1fr}.score{font-size:2.1rem}}
 @media print{.results{display:block!important}.review{break-inside:avoid}}
+
+/* Trinnvis flervalgsprøve med forklaring mellom spørsmålene */
+#stage-quiz[hidden],#delivery[hidden],#results[hidden],#feedback-panel[hidden],#next[hidden]{display:none!important}
+.quiz-step{margin:26px 0 34px}
+.qtop{margin:8px 0 14px}
+.instant-feedback{border:1px solid #bed3d7;border-radius:14px;padding:23px 24px;margin:16px 0;background:#edf6f7;line-height:1.6}
+.instant-feedback h3{margin:0 0 10px;font-size:1.17rem}
+.instant-feedback p{margin:8px 0}
+.instant-feedback.correct{background:#e6f6ed;border-color:#8fcaae}
+.instant-feedback.correct h3{color:#24694e}
+.instant-feedback.incorrect{background:#fff1e7;border-color:#e4af89}
+.instant-feedback.incorrect h3{color:#954c2a}
+.instant-feedback.pending{background:#ecf3f5;color:#496a75}
+.option.locked{cursor:default;opacity:.78}
+.option.selected{opacity:1}
+.option.right{border-color:#298b6d!important;background:#e1f5e9!important;opacity:1}
+.option.wrong{border-color:#c77b4f!important;background:#fff0e6!important;opacity:1}
+.next-button{display:block;margin:0 0 0 auto;min-width:250px;font-size:1rem}
+#score{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;letter-spacing:-.04em;color:#1a7163}
+#score-detail{font-size:1.15rem;font-weight:750;color:#426874}
+@media(max-width:620px){.next-button{width:100%}.instant-feedback{padding:16px}}
