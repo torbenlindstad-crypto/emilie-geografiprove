@@ -96,7 +96,7 @@ function doPost(e) {
     const email = p.email.trim().toLowerCase();
     sheet.appendRow([
       new Date(), p.receipt, safeCell_(p.student.trim()), p.exam,
-      ...choices, score, email, 'PENDING'
+      ...choices, score, email, 'PENDING', score / QUIZ_LENGTH
     ]);
     SpreadsheetApp.flush();
     const savedRow = sheet.getLastRow();
