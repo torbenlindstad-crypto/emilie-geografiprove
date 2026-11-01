@@ -43,3 +43,9 @@
 #score{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;letter-spacing:-.04em;color:#1a7163}
 #score-detail{font-size:1.15rem;font-weight:750;color:#426874}
 @media(max-width:620px){.next-button{width:100%}.instant-feedback{padding:16px}}
+
+/* Lokal omstart for prøve 2 */
+.reset-area{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid #e1eaf0}
+.reset-button{white-space:nowrap;font-size:.9rem}
+.reset-area p{margin:0;color:#607784;font-size:.81rem;line-height:1.5;max-width:570px}
+@media(max-width:620px){.reset-button{width:100%}}
