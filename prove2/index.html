@@ -12,8 +12,7 @@
 <section class="identity card"><div class="identity-fields"><div><label for="student">Elevens navn</label><input id="student" type="text" maxlength="100" placeholder="Skriv fullt navn" autocomplete="name" required></div><div><label for="email">Elevens e-postadresse</label><input id="email" type="email" maxlength="254" placeholder="elev@eksempel.no" autocomplete="email" required></div></div>
  <p class="privacy">Navn, e-postadresse og svar lagres i et privat Google Sheets-ark. E-posten brukes bare til å sende resultat og forklaringer. Kontroller at adressen er riktig.</p>
 <div class="progress"><span id="progress-label">0 av 32 besvart</span><span id="save-status">Klar</span></div><div class="bar"><div id="bar-fill"></div></div></section>
-<nav class="navigator" id="navigator" aria-label="Gå til spørsmål"></nav>
-<section id="questions" aria-live="polite"><p>Laster spørsmål …</p></section>
+<section id="stage-quiz" class="quiz-step"><div id="question-card" class="question card"><p>Laster spørsmål …</p></div><div id="feedback-panel" class="instant-feedback" hidden role="status"></div><button id="next" class="primary next-button" type="button" hidden>Neste spørsmål</button></section>
 <section class="delivery card" id="delivery"><h2>Lever prøve 2</h2>
 <p>Kontroller svarene og e-postadressen før du leverer. Når Google har bekreftet innleveringen, vises poeng og forklaringer til alle oppgavene under.</p>
 <div class="buttons"><button class="secondary" type="button" id="download">Last ned svar som sikkerhetskopi</button><button class="secondary" type="button" id="print">Skriv ut</button></div>
