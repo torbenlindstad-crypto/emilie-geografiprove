@@ -207,3 +207,9 @@ function doGet(e) {
   return ContentService.createTextOutput(prefix + '(' + JSON.stringify(result) + ');')
     .setMimeType(ContentService.MimeType.JAVASCRIPT);
 }
+
+// Velg denne funksjonen og trykk «Kjør» i Apps Script for å godkjenne
+// e-posttilgangen uten å sende en testmelding.
+function sjekkEpostTillatelse() {
+  Logger.log('Ledige e-postmottakere i dag: ' + MailApp.getRemainingDailyQuota());
+}
