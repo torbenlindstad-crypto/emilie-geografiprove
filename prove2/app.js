@@ -149,7 +149,7 @@ async function submit(){
   const result=await resultLookup(receipt);
   if(result)confirmed(result,receipt);
   else {$("submit-status").textContent="Mottak er ikke bekreftet. Prosenten nedenfor er beregnet lokalt.";locallyCalculated();}
- }catch(err){$("submit-status").textContent="Kunne ikke bekrefte innleveringen. Last ned en sikkerhetskopi."}
+ }catch(err){$("submit-status").textContent="Kunne ikke bekrefte innleveringen. Last ned en sikkerhetskopi.";locallyCalculated()}
  finally{button.disabled=false}
 }
 $("next").addEventListener("click",next);
