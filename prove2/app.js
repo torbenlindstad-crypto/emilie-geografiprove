@@ -158,6 +158,13 @@ $("next").addEventListener("click",next);
 $("submit").addEventListener("click",submit);
 $("download").addEventListener("click",backup);
 $("print").addEventListener("click",()=>window.print());
+$("reset-quiz").addEventListener("click",()=>{
+  const agreed=window.confirm("Ta prøve 2 på nytt?\n\nAlle svar og fremdrift for prøve 2 som er lagret i denne nettleseren, blir slettet. Tidligere innleveringer i Google Sheets og prøve 1 beholdes.");
+  if(!agreed)return;
+  try{localStorage.removeItem(STORAGE);}
+  catch(error){window.alert("Kunne ikke nullstille den lokale prøven. Sjekk nettleserens lagringsinnstillinger.");return;}
+  window.location.reload();
+});
 fetch("questions.json").then(r=>{if(!r.ok)throw Error("Spørsmål kunne ikke lastes");return r.json()}).then(data=>{
  questions=data.questions;images=data.images||{};
  if(!Array.isArray(questions)||questions.length!==32)throw Error("Feil antall spørsmål");
