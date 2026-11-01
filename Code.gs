@@ -1,85 +1,209 @@
-/** Apps Script: mottak for to geografiprøver (samme Google Sheets-arbeidsbok).
- * Dette er kun kildekoden i GitHub. Lim inn hele filen i Apps Script-prosjektet
- * som er knyttet til regnearket, og velg Implementer > Administrer implementeringer
- * > Rediger > Ny versjon > Implementer.
- * Ingen OpenAI API eller AI-vurdering. Prøve 1 beholdes uendret.
+/**
+ * Google Apps Script – geografiprøve 1 + flervalgsprøve 2.
+ * Sett inn i regnearkets Apps Script-editor, og distribuer en NY webapp-versjon.
+ * Prøve 1 forblir kompatibel.
+ * Prøve 2: obligatorisk e-post, poengberegning, tilbakemelding og e-post.
+ * Ingen AI/API-nøkler. Alle fasitsvar hentes fra den private fanen.
  */
-const OLD_EXAM = 'Geografi VG1 – Jordas indre og berggrunnen';
-const QUIZ2_EXAM = 'Geografi VG1 – Flervalgsprøve 2';
-const OLD_SHEET = 'Besvarelser';
-const QUIZ2_SHEET = 'Flervalg 2';
-const QUIZ2_ANSWER_SHEET = 'Fasit flervalg 2';
+const ESSAY_TITLE = 'Geografi VG1 – Jordas indre og berggrunnen';
+const QUIZ_TITLE = 'Geografi VG1 – Flervalgsprøve 2';
+const ESSAY_SHEET = 'Besvarelser';
+const QUIZ_SHEET = 'Flervalg 2';
+const KEY_SHEET = 'Fasit flervalg 2';
+const QUIZ_LENGTH = 32;
+const RECEIPT_PATTERN = /^[a-f0-9-]{36}$/i;
+const EMAIL_PATTERN = /^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/;
 
+function output_(value) {
+  return ContentService.createTextOutput(value);
+}
+function safeCell_(input) {
+  return String(input).replace(/^\s*[=+@-]/, "'$&");
+}
+function isDuplicate_(sheet, receipt) {
+  const last = sheet.getLastRow();
+  if (last < 2) return false;
+  return !!sheet.getRange(2, 2, last - 1, 1)
+    .createTextFinder(receipt).matchEntireCell(true).findNext();
+}
+function quizKey_(ss) {
+  const sheet = ss.getSheetByName(KEY_SHEET);
+  if (!sheet) throw new Error('MISSING_KEY_SHEET');
+  const rows = sheet.getRange(2, 1, QUIZ_LENGTH, 6).getValues();
+  return rows.map((r, i) => {
+    const entry = {
+      number: Number(r[0]),
+      correct: String(r[1]),
+      topic: String(r[2]),
+      explanation: String(r[3]),
+      question: String(r[4]),
+      correctText: String(r[5])
+    };
+    if (entry.number !== i + 1 || !/^[A-D]$/.test(entry.correct) ||
+        !entry.explanation || !entry.question || !entry.correctText) {
+      throw new Error('INVALID_KEY_ROW_' + (i + 2));
+    }
+    return entry;
+  });
+}
+function checkSubmission_(p) {
+  return p && typeof p.student === 'string' && p.student.trim().length > 0 &&
+    p.student.length <= 100 && RECEIPT_PATTERN.test(p.receipt || '');
+}
 function doPost(e) {
   const lock = LockService.getScriptLock();
-  if (!lock.tryLock(25000)) return ContentService.createTextOutput('BUSY');
+  if (!lock.tryLock(25000)) return output_('BUSY');
   try {
     if (!e || !e.postData || !e.postData.contents || e.postData.contents.length > 3000000) {
-      return ContentService.createTextOutput('INVALID');
+      return output_('INVALID');
     }
     const p = JSON.parse(e.postData.contents);
-    if (typeof p.student !== 'string' || p.student.trim().length < 1 ||
-        p.student.length > 100 || !/^[a-f0-9-]{36}$/i.test(p.receipt || '')) {
-      return ContentService.createTextOutput('INVALID');
-    }
+    if (!checkSubmission_(p)) return output_('INVALID');
     const ss = SpreadsheetApp.getActiveSpreadsheet();
-    if (!ss) return ContentService.createTextOutput('MISSING_SPREADSHEET');
-    const safeStudent = protectFormula_(p.student.trim());
+    if (!ss) return output_('MISSING_SHEET');
 
-    if (p.exam === OLD_EXAM && p.version === 2) {
-      // Samme format og 10 svar som i prøve 1.
-      if (!Array.isArray(p.answers) || p.answers.length !== 10) {
-        return ContentService.createTextOutput('INVALID');
-      }
-      const sheet = ss.getSheetByName(OLD_SHEET);
-      if (!sheet) return ContentService.createTextOutput('MISSING_SHEET');
-      if (hasReceipt_(sheet, p.receipt)) return ContentService.createTextOutput('DUPLICATE');
+    if (p.exam === ESSAY_TITLE && p.version === 2) {
+      if (!Array.isArray(p.answers) || p.answers.length !== 10) return output_('INVALID');
+      const sheet = ss.getSheetByName(ESSAY_SHEET);
+      if (!sheet) return output_('MISSING_SHEET');
+      if (isDuplicate_(sheet, p.receipt)) return output_('DUPLICATE');
       const answers = p.answers.map((a, i) => {
-        if (Number(a.number) !== i + 1 || typeof a.text !== 'string' || a.text.length > 50000) {
-          throw new Error('Invalid essay answer');
-        }
-        return protectFormula_(a.text);
+        if (Number(a.number) !== i + 1 || typeof a.text !== 'string' ||
+            a.text.length > 50000) throw new Error('BAD_ESSAY_ANSWER');
+        return safeCell_(a.text);
       });
-      sheet.appendRow([new Date(), p.receipt, safeStudent, p.exam, ...answers]);
-      return ContentService.createTextOutput('RECEIVED');
+      sheet.appendRow([new Date(), p.receipt, safeCell_(p.student.trim()), p.exam, ...answers]);
+      return output_('RECEIVED');
     }
 
-    if (p.exam === QUIZ2_EXAM && p.version === 1) {
-      if (!Array.isArray(p.answers) || p.answers.length !== 32) {
-        return ContentService.createTextOutput('INVALID');
+    if (p.exam !== QUIZ_TITLE || p.version !== 1) return output_('INVALID_EXAM');
+    if (!Array.isArray(p.answers) || p.answers.length !== QUIZ_LENGTH ||
+        typeof p.email !== 'string' || p.email.length > 254 ||
+        !EMAIL_PATTERN.test(p.email.trim())) return output_('INVALID');
+
+    const sheet = ss.getSheetByName(QUIZ_SHEET);
+    if (!sheet) return output_('MISSING_SHEET');
+    if (isDuplicate_(sheet, p.receipt)) return output_('DUPLICATE');
+
+    const choices = p.answers.map((answer, i) => {
+      if (Number(answer.number) !== i + 1 || !/^[A-D]$/.test(answer.choice || '')) {
+        throw new Error('INVALID_QUIZ_CHOICE');
       }
-      const sheet = ss.getSheetByName(QUIZ2_SHEET);
-      const keySheet = ss.getSheetByName(QUIZ2_ANSWER_SHEET);
-      if (!sheet || !keySheet) return ContentService.createTextOutput('MISSING_SHEET');
-      if (hasReceipt_(sheet, p.receipt)) return ContentService.createTextOutput('DUPLICATE');
-      const choices = p.answers.map((a, i) => {
-        if (Number(a.number) !== i + 1 || !/^[A-D]$/.test(a.choice || '')) {
-          throw new Error('Invalid multiple choice answer');
-        }
-        return a.choice;
-      });
-      const correct = keySheet.getRange(2, 2, 32, 1).getValues().map(row => row[0]);
-      if (correct.length !== 32 || correct.some(x => !/^[A-D]$/.test(String(x)))) {
-        return ContentService.createTextOutput('INVALID_ANSWER_KEY');
+      return answer.choice;
+    });
+    const key = quizKey_(ss);
+    const score = choices.reduce((sum, value, i) => sum + (value === key[i].correct ? 1 : 0), 0);
+    const email = p.email.trim().toLowerCase();
+    sheet.appendRow([
+      new Date(), p.receipt, safeCell_(p.student.trim()), p.exam,
+      ...choices, score, email, 'PENDING'
+    ]);
+    SpreadsheetApp.flush();
+    const savedRow = sheet.getLastRow();
+    let emailStatus = 'FAILED';
+    try {
+      // Åpent mottak: begrens antall e-postforsøk for å redusere risiko for misbruk.
+      const now = Date.now();
+      const first = Math.max(2, savedRow - 199);
+      const count = savedRow >= first ? savedRow - first + 1 : 0;
+      const rows = count ? sheet.getRange(first, 1, count, 39).getValues() : [];
+      const today = rows.filter(r => r[0] instanceof Date &&
+        now - r[0].getTime() >= 0 && now - r[0].getTime() < 86400000);
+      const toThisEmail = today.filter(r => String(r[37]).toLowerCase() === email).length;
+      const sentToday = today.filter(r => r[38] === 'SENT').length;
+      if (toThisEmail > 2 || sentToday >= 40) {
+        emailStatus = 'LIMIT';
+      } else if (MailApp.getRemainingDailyQuota() < 1) {
+        emailStatus = 'QUOTA';
+      } else {
+        const body = [
+          'Geografiprøve 2 – resultat',
+          '',
+          'Du fikk ' + score + ' av ' + QUIZ_LENGTH + ' poeng.',
+          'Dette er en øvingsprøve, ikke en offisiell karakter.',
+          'Kvittering: ' + p.receipt,
+          '',
+          'Dine svar og forklaringer:',
+          ''
+        ];
+        key.forEach((item, i) => {
+          body.push(
+            (i + 1) + '. ' + item.question,
+            'Ditt svar: ' + choices[i] + (choices[i] === item.correct ? ' (riktig)' : ' (feil)'),
+            'Riktig svar: ' + item.correct + ' – ' + item.correctText,
+            'Hvorfor: ' + item.explanation,
+            ''
+          );
+        });
+        MailApp.sendEmail(email, 'Resultatet ditt – Geografiprøve 2 (' +
+          score + '/32)', body.join('\n'));
+        emailStatus = 'SENT';
       }
-      const score = choices.reduce((sum, choice, i) => sum + Number(choice === correct[i]), 0);
-      sheet.appendRow([new Date(), p.receipt, safeStudent, p.exam, ...choices, score]);
-      return ContentService.createTextOutput('RECEIVED');
+    } catch (mailError) {
+      console.error('Email failure for receipt ' + p.receipt + ': ' + mailError);
+      emailStatus = 'FAILED';
     }
-    return ContentService.createTextOutput('INVALID_EXAM');
+    sheet.getRange(savedRow, 39).setValue(emailStatus);
+    return output_('RECEIVED');
   } catch (err) {
-    console.error(err);
-    return ContentService.createTextOutput('ERROR');
+    console.error('doPost failed: ' + err);
+    return output_('ERROR');
   } finally {
     lock.releaseLock();
   }
 }
 
-function protectFormula_(value) {
-  return value.replace(/^\s*[=+@-]/, "'$&");
-}
-
-function hasReceipt_(sheet, receipt) {
-  const last = sheet.getLastRow();
-  return last > 1 && sheet.getRange(2, 2, last - 1, 1).getValues().some(row => row[0] === receipt);
+/**
+ * Lesbart JSONP-oppslag for én tilfeldig kvitterings-ID. Returnerer aldri navn
+ * eller e-post. Kun prøve 2, og kun etter at lagring og e-postforsøk er ferdig.
+ * Ikke bruk til sensitive prøver; dette er en offentlig øvingsløsning.
+ */
+function doGet(e) {
+  const p = (e && e.parameter) || {};
+  const prefix = String(p.prefix || '');
+  const receipt = String(p.receipt || '');
+  if (p.action !== 'result' || !/^quiz2_cb_[a-zA-Z0-9_]{8,48}$/.test(prefix)) {
+    return output_('INVALID');
+  }
+  let result = {status: 'pending'};
+  try {
+    if (RECEIPT_PATTERN.test(receipt)) {
+      const ss = SpreadsheetApp.getActiveSpreadsheet();
+      const sheet = ss.getSheetByName(QUIZ_SHEET);
+      if (sheet && sheet.getLastRow() > 1) {
+        const found = sheet.getRange(2, 2, sheet.getLastRow() - 1, 1)
+          .createTextFinder(receipt).matchEntireCell(true).findNext();
+        if (found) {
+          const row = sheet.getRange(found.getRow(), 1, 1, 39).getValues()[0];
+          if (row[3] === QUIZ_TITLE && row[38] !== 'PENDING') {
+            const key = quizKey_(ss);
+            const feedback = key.map((item, i) => {
+              const chosen = String(row[i + 4]);
+              return {
+                number: i + 1,
+                selected: chosen,
+                correct: item.correct,
+                isCorrect: chosen === item.correct,
+                correctText: item.correctText,
+                explanation: item.explanation
+              };
+            });
+            const score = feedback.filter(item => item.isCorrect).length;
+            result = {
+              status: 'ready',
+              score: score,
+              total: QUIZ_LENGTH,
+              emailStatus: String(row[38]),
+              feedback: feedback
+            };
+          }
+        }
+      }
+    }
+  } catch (err) {
+    console.error('doGet: ' + err);
+    result = {status: 'error'};
+  }
+  return ContentService.createTextOutput(prefix + '(' + JSON.stringify(result) + ');')
+    .setMimeType(ContentService.MimeType.JAVASCRIPT);
 }
