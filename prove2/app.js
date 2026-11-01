@@ -1,6 +1,7 @@
 (()=>{"use strict";
 const STORAGE="geo-vg1-flervalg-2-trinnvis-v1";
 const ABCD=["A","B","C","D"];
+const LOCAL_FEEDBACK=[{"c":"B","e":"Jordas indre kjerne er fast på grunn av det enorme trykket. Den ytre kjernen er flytende og består hovedsakelig av jern og nikkel."},{"c":"C","e":"Litosfæren omfatter både jordskorpa og den øverste, stive delen av mantelen. Den er delt i tektoniske plater."},{"c":"A","e":"Astenosfæren består stort sett av faste bergarter som deformeres svært langsomt. Derfor kan de stive platene over bevege seg."},{"c":"A","e":"Når en gammel og tung havbunnsplate synker ned i mantelen, trekker tyngdekraften også resten av platen mot subduksjonssonen. Dette kalles platetrekk."},{"c":"D","e":"Like fossiler, bergarter og fjellkjeder på kontinenter langt fra hverandre er spor etter at kontinentene en gang hang sammen i Pangea."},{"c":"B","e":"Nazcaplaten er havbunnsskorpe som synker ned under den søramerikanske platen. Det gir jordskjelv og bidrar til vulkanisme i Andesfjellene."},{"c":"B","e":"Magma stiger opp ved midthavsryggen og størkner til ny havbunn. Havbunnen skyves utover og blir eldre jo lenger den ligger fra ryggen."},{"c":"C","e":"Avstand delt på tid gir farten: 120 km = 12 000 000 cm. 12 000 000 cm / 6 000 000 år = 2 cm/år for én side."},{"c":"A","e":"Island ligger både over en hotspot og på den midtatlantiske ryggen, der platene sprer seg. Begge forhold bidrar til vulkanismen."},{"c":"B","e":"Når et kontinent strekkes, kan jordskorpa sprekke opp og blokker synke langs forkastninger. Forsenkningen kalles en riftdal."},{"c":"D","e":"Himalaya ble dannet da den indiske og den eurasiske kontinentalskorpa kolliderte. Bergarter ble foldet og presset opp til en fjellkjede."},{"c":"C","e":"Når to havbunnsplater møtes, kan én synke under den andre. Magma kan da stige opp og danne vulkanøyer i en bue."},{"c":"A","e":"Den tunge havbunnsplaten synker under kontinentet og skaper en dyphavsgrop. Smelting i mantelen over platen gir magma og vulkanske fjell på land."},{"c":"D","e":"Ved en glidegrense beveger platene seg sidelengs. Friksjonen kan låse dem slik at spenning bygger seg opp og utløser jordskjelv."},{"c":"C","e":"Fokus er stedet inne i jorda der bruddet begynner. Episenteret er punktet på jordoverflaten rett over dette stedet."},{"c":"B","e":"Seismografen registrerer rystelser som kan analyseres. Momentmagnitude (Mw) beskriver størrelsen på jordskjelvet ut fra seismisk moment."},{"c":"A","e":"En økning på én enhet på momentmagnitudeskalaen tilsvarer omtrent 32 ganger så mye frigjort energi, ikke bare dobbelt så mye."},{"c":"D","e":"En tsunami kan oppstå når havbunnen plutselig flytter store vannmasser, særlig ved vertikal forskyvning under et undersjøisk jordskjelv."},{"c":"C","e":"Skader avhenger også av blant annet byggekvalitet, løsmasser, befolkningstetthet og beredskap. Samme skjelv kan derfor få ulik virkning."},{"c":"B","e":"Havbunnsplaten beveger seg over en forholdsvis fastliggende hotspot. Nye vulkaner dannes nær hotspoten, mens eldre øyer føres bort."},{"c":"A","e":"Lettflytende basaltisk lava kan strømme langt og bygge opp en bred vulkan med slake sider. Det er typisk for skjoldvulkaner."},{"c":"C","e":"Tyktflytende magma gjør det vanskeligere for gass å slippe ut. Trykket kan bygge seg opp og gi eksplosive utbrudd i stratovulkaner."},{"c":"D","e":"En hotspot kan gi vulkanisme inne på en plate, uten subduksjon. Vulkanske øybuer dannes vanligvis når én havbunnsplate synker under en annen."},{"c":"B","e":"Granitt dannes når magma størkner langsomt dypt i jordskorpa. Det gir store krystaller, ofte av kvarts, feltspat og glimmer."},{"c":"A","e":"En gangbergart dannes når magma størkner i sprekker eller ganger under jordoverflaten, i motsetning til dag- og dypbergarter."},{"c":"C","e":"Basalt dannes ofte av lava som kjøles raskt ned ved jordoverflaten. Krystallene får derfor kort tid til å vokse og blir små."},{"c":"D","e":"Sand avsettes i lag, presses sammen og sementeres. Da blir de løse sandkornene til sedimentær bergart, altså sandstein."},{"c":"B","e":"Kalkstein kan bli til marmor når varme og trykk fører til omkrystallisering uten at bergarten smelter. Dette kalles metamorfose."},{"c":"A","e":"Gneis er en metamorf bergart. Høyt trykk og temperatur kan omdanne mineralene og gi tydelige striper eller bånd."},{"c":"D","e":"Bergartenes kretsløp er ikke én fast rekkefølge. En magmatisk bergart kan for eksempel bli metamorf direkte ved varme og trykk."},{"c":"C","e":"Den kaledonske fjellkjeden oppstod ved kontinentkollisjon. Bergarter ble foldet, skjøvet og omdannet av trykk og varme."},{"c":"B","e":"Oslofeltet ble dannet ved oppsprekking og innsynking av jordskorpa. Magmatisk aktivitet dannet flere vulkanske og intrusive bergarter."}];
 const $=id=>document.getElementById(id);
 const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
 const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
@@ -27,21 +28,14 @@ function getJsonp(params){return new Promise((resolve,reject)=>{
  script.src=target+"?"+new URLSearchParams({...params,prefix:cb}).toString();
  document.head.append(script);
 })}
-async function checkAnswer(number,choice){
- const panel=$("feedback-panel");panel.hidden=false;panel.className="instant-feedback pending";
- panel.textContent="Kontrollerer svaret og henter forklaring …";
- $("next").hidden=true;
- try{
-  const data=await getJsonp({action:"check",number,choice});
-  if(!data||data.status!=="checked"||data.number!==number||data.selected!==choice||!ABCD.includes(data.correct)||!data.explanation)throw Error("Ugyldig respons");
-  state.feedback[number]=data;store();renderQuestion();
-  $("feedback-panel").scrollIntoView({behavior:"smooth",block:"nearest"});
- }catch(err){
-  panel.textContent="";
-  panel.append(el("h3","","Kunne ikke hente fasit ennå"),el("p","","Svaret ditt er lagret og låst. Kontroller at Apps Script er oppdatert, og prøv igjen."));
-  const retry=el("button","secondary","Prøv å hente forklaringen igjen");
-  retry.addEventListener("click",()=>checkAnswer(number,choice));panel.append(retry);
- }
+function checkAnswer(number,choice){
+ const item=LOCAL_FEEDBACK[number-1];
+ const question=questions[number-1];
+ if(!item||!question||!ABCD.includes(choice))return;
+ const rightText=question.options[ABCD.indexOf(item.c)];
+ const data={status:"checked",number,selected:choice,isCorrect:choice===item.c,correct:item.c,correctText:rightText,explanation:item.e};
+ state.feedback[number]=data;store();renderQuestion();
+ $("feedback-panel").scrollIntoView({behavior:"smooth",block:"nearest"});
 }
 function choose(number,choice){
  if(state.stage!=="quiz"||state.choices[number]||questions[state.index].number!==number)return;
