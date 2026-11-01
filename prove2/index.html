@@ -9,15 +9,24 @@
 <h1>Prøve 2 <span>Flervalg</span></h1>
 <p>32 spørsmål · ett riktig alternativ per spørsmål · ca. 40–55 minutter. Velg det faglig beste svaret. Oppgavene tester både begreper og sammenhenger.</p>
 <div class="note">Svar lagres automatisk <strong>i denne nettleseren</strong>. Eksterne bildelenker åpnes i en ny fane. Ingen bilder kopieres til dette nettstedet.</div></section>
-<section class="identity card"><label for="student">Elevens navn</label><input id="student" type="text" maxlength="100" placeholder="Skriv fullt navn" autocomplete="name" required>
+<section class="identity card"><div class="identity-fields"><div><label for="student">Elevens navn</label><input id="student" type="text" maxlength="100" placeholder="Skriv fullt navn" autocomplete="name" required></div><div><label for="email">Elevens e-postadresse</label><input id="email" type="email" maxlength="254" placeholder="elev@eksempel.no" autocomplete="email" required></div></div>
+ <p class="privacy">Navn, e-postadresse og svar lagres i et privat Google Sheets-ark. E-posten brukes bare til å sende resultat og forklaringer. Kontroller at adressen er riktig.</p>
 <div class="progress"><span id="progress-label">0 av 32 besvart</span><span id="save-status">Klar</span></div><div class="bar"><div id="bar-fill"></div></div></section>
 <nav class="navigator" id="navigator" aria-label="Gå til spørsmål"></nav>
 <section id="questions" aria-live="polite"><p>Laster spørsmål …</p></section>
 <section class="delivery card" id="delivery"><h2>Lever prøve 2</h2>
-<p>Kontroller svarene før innlevering. Siden viser ikke fasit mens prøven pågår.</p>
+<p>Kontroller svarene og e-postadressen før du leverer. Når Google har bekreftet innleveringen, vises poeng og forklaringer til alle oppgavene under.</p>
 <div class="buttons"><button class="secondary" type="button" id="download">Last ned svar som sikkerhetskopi</button><button class="secondary" type="button" id="print">Skriv ut</button></div>
 <label class="confirm"><input id="agree" type="checkbox"> Jeg har kontrollert svarene mine og vil levere.</label>
 <button id="submit" type="button" class="primary">Lever 32 flervalgssvar</button><p id="submit-status" role="status"></p>
-<div id="receipt" hidden></div><p class="fine">Nettleseren får ikke sikker serverbekreftelse fra Google. Kontroller innleveringen i Google Sheets. Dette er en øvingsprøve, ikke en låst eksamen.</p></section>
+<div id="receipt" hidden></div><p class="fine">Du får bare se resultatet etter at Google Sheets har bekreftet mottak via kvitterings-ID. Dette er en øvingsprøve, ikke en offisiell karakter eller en låst eksamen.</p></section>
+<section class="results card" id="results" hidden aria-live="polite">
+ <div class="results-eyebrow">PRØVE 2 ER LEVERT</div>
+ <h2>Ditt resultat</h2>
+ <div class="score" id="score"></div>
+ <p id="email-status"></p>
+ <p class="results-intro">Her ser du hva du svarte, hva som er riktig svar, og hvorfor. Bruk forklaringene til å lære det du ikke kunne ennå.</p>
+ <div id="feedback"></div>
+</section>
 <footer>Faglig grunnlag: lærerens presentasjoner, Terra Nova og NDLA. Bildene åpnes på de opprinnelige kildesidene med lisens og opphavsperson.</footer>
 </main><script src="config.js"></script><script src="app.js"></script></body></html>

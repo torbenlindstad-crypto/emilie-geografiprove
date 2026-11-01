@@ -4,7 +4,10 @@
 - Bygger på jordas oppbygning, platetektonikk, naturfarer, bergarter og Norges geologi. Ressurs- og arealbruk er utelatt.
 - Ni illustrasjonssider fra USGS/NPS/Wikimedia Commons er **kun lenket til**; ingen tredjeparts bildefiler er lastet opp i repoet. Lisens og opphav er synlige ved hvert bildelenkespørsmål.
 - Lokal automatisk lagring og JSON-eksport.
-- Levering til Google Sheets krever at kode fra `Code.gs` i repoets rot erstatter den tidligere koden i Apps Script, og at webappen distribueres som ny versjon. Deretter må `prove2/config.js` få `enabled:true`. Inntil da fungerer prøven lokalt og kan lastes ned som sikkerhetskopi, men den kan **ikke leveres** til Google Sheets.
+- For digital innlevering: Kopier den nyeste `Code.gs` i repoets rot til Apps Script knyttet til Google Sheets, autoriser eventuell ny MailApp-tillatelse og distribuer en **ny versjon** under Administrer implementeringer. Endre deretter `prove2/config.js` til `enabled:true`. Inntil da fungerer prøven lokalt, men innleveringsknappen er deaktivert.
+- Før levering må eleven fylle inn navn og gyldig e-postadresse. Etter at serveren har bekreftet mottak via en tilfeldig kvitterings-ID, får eleven 0–32 poeng og en begrunnelse på hvert spørsmål. En kopi sendes også på e-post når MailApp tillater det.
+- Google Sheets: `Flervalg 2` har 32 svar, totalscore, e-postadresse og status for e-postutsending. Fasit ligger i privat fane `Fasit flervalg 2`.
+- Bruk av e-post: Adressen lagres sammen med besvarelsen i privat regneark og benyttes bare til å sende resultat. Avsenderen må selv sikre at lagring og sletting følger gjeldende personvernrutiner.
 - Riktig svar finnes **ikke** i elevens offentlige kode. Fasit og forklaringer ligger i privat Google Sheets-fane `Fasit flervalg 2`.
 
 ## Publisert adresse
