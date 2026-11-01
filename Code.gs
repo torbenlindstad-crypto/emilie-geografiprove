@@ -59,7 +59,7 @@ function doPost(e) {
     }
     const p = JSON.parse(e.postData.contents);
     if (!checkSubmission_(p)) return output_('INVALID');
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const ss = SpreadsheetApp.openById('1W6z74XULvu4yDwUAaxwEYDu0V79QC3_rN3fjvJFQXg0');
     if (!ss) return output_('MISSING_SHEET');
 
     if (p.exam === ESSAY_TITLE && p.version === 2) {
@@ -172,7 +172,7 @@ function doGet(e) {
       const choice = String(p.choice || '');
       if (Number.isInteger(number) && number >= 1 && number <= QUIZ_LENGTH &&
           /^[A-D]$/.test(choice)) {
-        const key = quizKey_(SpreadsheetApp.getActiveSpreadsheet());
+        const key = quizKey_(SpreadsheetApp.openById('1W6z74XULvu4yDwUAaxwEYDu0V79QC3_rN3fjvJFQXg0'));
         const item = key[number - 1];
         result = {
           status: 'checked',
@@ -185,7 +185,7 @@ function doGet(e) {
         };
       }
     } else if (RECEIPT_PATTERN.test(receipt)) {
-      const ss = SpreadsheetApp.getActiveSpreadsheet();
+      const ss = SpreadsheetApp.openById('1W6z74XULvu4yDwUAaxwEYDu0V79QC3_rN3fjvJFQXg0');
       const sheet = ss.getSheetByName(QUIZ_SHEET);
       if (sheet && sheet.getLastRow() > 1) {
         const found = sheet.getRange(2, 2, sheet.getLastRow() - 1, 1)
@@ -229,4 +229,16 @@ function doGet(e) {
 // e-posttilgangen uten å sende en testmelding.
 function sjekkEpostTillatelse() {
   Logger.log('Ledige e-postmottakere i dag: ' + MailApp.getRemainingDailyQuota());
+}
+
+// Kjør denne funksjonen i Apps Script ved første oppsett.
+// Den kontrollerer regnearktilgang uten å lagre svar eller sende e-post.
+function testMottak() {
+  const ss = SpreadsheetApp.openById('1W6z74XULvu4yDwUAaxwEYDu0V79QC3_rN3fjvJFQXg0');
+  const a = ss.getSheetByName('Flervalg 2');
+  const b = ss.getSheetByName('Fasit flervalg 2');
+  if (!a || !b) throw new Error('Mangler arkfane');
+  const n = b.getRange('B2:B33').getValues().filter(r => /^[A-D]$/.test(r[0])).length;
+  if (n !== 32) throw new Error('Mangler riktige svar i fasiten');
+  Logger.log('OK: regneark og 32 fasitsvar er tilgjengelige. Ingen innlevering ble sendt.');
 }
