@@ -1,0 +1,284 @@
+[
+  {
+    "id": "1",
+    "title": "Oppgave 1  –  Jordas oppbygning    [8 p]",
+    "points": 8,
+    "items": [
+      {
+        "type": "text",
+        "text": "a) Forklar hvordan jordskorpa, mantelen, ytre og indre kjerne er plassert. Beskriv hvilke deler som i hovedsak er faste og hvilke som er flytende. (4 p)"
+      },
+      {
+        "type": "text",
+        "text": "b) En elev sier: «Litosfæren er det samme som jordskorpa, og astenosfæren er et hav av flytende magma.» Forklar hvorfor dette er misvisende, og hvordan platene kan bevege seg. (4 p)"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Oppgave 2  –  Skill begrepene    [8 p]",
+    "points": 8,
+    "items": [
+      {
+        "type": "text",
+        "text": "Velg FIRE av de fem begrepsparene. For hvert par: Forklar forskjellen og gi én faglig sammenheng eller ett relevant eksempel. (2 p per par)"
+      },
+      {
+        "type": "text",
+        "text": "A. Subduksjon og kollisjonssone    B. Midthavsrygg og spredningsakse"
+      },
+      {
+        "type": "text",
+        "text": "C. Jordskjelvets sentrum (fokus) og episenter    D. Hotspot og vulkansk øybue"
+      },
+      {
+        "type": "text",
+        "text": "E. Forvitring og erosjon"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Oppgave 3  –  Måling av jordskjelv    [4 p]",
+    "points": 4,
+    "items": [
+      {
+        "type": "text",
+        "text": "Hva registrerer en seismograf, og hva uttrykker momentmagnitudeskalaen (Mw)? Hvorfor vil to jordskjelv med samme Mw kunne gi svært ulik skade? (4 p)"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Oppgave 4  –  Tre plategrenser    [9 p]",
+    "points": 9,
+    "items": [
+      {
+        "type": "text",
+        "text": "Studer figur 1. Tolk figurene X, Y og Z ved å bruke piler, berggrunn og landformer."
+      },
+      {
+        "type": "text",
+        "text": "a) Hva skjer med platene i hver situasjon? Bruk navn på plategrense eller prosess. (3 p)"
+      },
+      {
+        "type": "text",
+        "text": "b) Nevn og begrunn minst én typisk landform som kan dannes i hver situasjon. Forklar også hvordan en riftdal kan oppstå når spredning skjer på et kontinent. (4 p)"
+      },
+      {
+        "type": "text",
+        "text": "c) Forklar hvorfor situasjonene ikke gir helt samme mønster av vulkaner og jordskjelv. (2 p)"
+      },
+      {
+        "type": "figure",
+        "text": "Figur 1: Skjematiske tverrsnitt av tre typer platebevegelse.",
+        "file": "plategrenser.png"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Oppgave 5  –  Havbunnsspredning og en modell    [12 p]",
+    "points": 12,
+    "items": [
+      {
+        "type": "text",
+        "text": "Studer figur 2. Tallene viser modellert alder på havbunnen og avstand fra spredningsaksen."
+      },
+      {
+        "type": "text",
+        "text": "a) Beskriv mønsteret i havbunnens alder. Forklar hvordan mønsteret støtter teorien om havbunnsspredning. (4 p)"
+      },
+      {
+        "type": "text",
+        "text": "b) Beregn farten til ÉN side av havbunnen i centimeter per år. Vis utregning. Hvor stor er avstanden de to sidene øker med per år, dersom de beveger seg symmetrisk? (4 p)"
+      },
+      {
+        "type": "text",
+        "text": "c) Forklar hvorfor ny havbunn dannes her, mens gammel havbunn andre steder kan forsvinne, og knytt dette til kontinentaldrift fra Pangea. Pek på én svakhet ved å bruke figur 2 som bevis for et faktisk havområde. (4 p)"
+      },
+      {
+        "type": "figure",
+        "text": "Figur 2: Konstruerte øvelsesdata vist som et forenklet kart.",
+        "file": "havbunnsalder.png"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "title": "Oppgave 6  –  Tre veier til fjell og vulkaner    [12 p]",
+    "points": 12,
+    "items": [
+      {
+        "type": "text",
+        "text": "Sammenlign Andesfjellene, Himalaya og en vulkansk øybue ved Japan."
+      },
+      {
+        "type": "text",
+        "text": "a) Beskriv hvilke plater eller typer jordskorpe som møtes i hvert område. (3 p)"
+      },
+      {
+        "type": "text",
+        "text": "b) Forklar forskjellen mellom dyphavsgrop, vulkansk fjellkjede på kontinent og vulkansk øybue. Knytt forklaringen til prosessene under jordoverflaten. (3 p)"
+      },
+      {
+        "type": "text",
+        "text": "c) Hvorfor er Himalaya ikke en typisk vulkansk øybue? Hvorfor kan en hotspot og søylestrøm danne vulkanøyer uten subduksjon? (3 p)"
+      },
+      {
+        "type": "text",
+        "text": "d) Sammenlign skjoldvulkan og stratovulkan: form, lava og utbrudd. Forklar hvilken platetektonisk sammenheng de ofte er knyttet til. (3 p)"
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "title": "Oppgave 7  –  Bergarter og bergartenes kretsløp    [12 p]",
+    "points": 12,
+    "items": [
+      {
+        "type": "text",
+        "text": "En feltgruppe har skrevet disse observasjonene. Identifiser først hovedtype og mest sannsynlige eksempel på bergart for A–D. (4 p)"
+      },
+      {
+        "type": "text",
+        "text": "b) Bruk to av prøvene til å forklare forskjellen på dagbergart, gangbergart og dypbergart, og hvorfor krystallstørrelsen kan variere. (3 p)"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Prøve",
+            "Observasjoner"
+          ],
+          [
+            "A",
+            "Store synlige mineraler; kvarts, feltspat og glimmer; ingen tydelig lagdeling"
+          ],
+          [
+            "B",
+            "Lagdeling; avrundede sandkorn som er sementert sammen"
+          ],
+          [
+            "C",
+            "Tydelige bånd/striper; mineralene er omkrystallisert under varme og trykk"
+          ],
+          [
+            "D",
+            "Mørk, finkornet bergart som er størknet fra lava på overflaten"
+          ]
+        ]
+      },
+      {
+        "type": "text",
+        "text": "c) Beskriv én mulig vei gjennom bergartenes kretsløp fra A via løsmasser og en ny bergart til C og videre til ny magmatisk bergart. Bruk forvitring, erosjon, avsetning, herding, metamorfose og smelting riktig. Forklar også hvorfor kretsløpet ikke må følges i én fast rekkefølge. (5 p)"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "title": "Oppgave 8  –  Vurder kilder og modeller    [10 p]",
+    "points": 10,
+    "items": [
+      {
+        "type": "text",
+        "text": "Du finner tre ulike kilder i arbeidet med plategrenser:"
+      },
+      {
+        "type": "text",
+        "text": "Kilde A: Et udatert elevnotat hevder: «To kontinenter som kolliderer, danner vanligvis vulkanske øybuer.»"
+      },
+      {
+        "type": "text",
+        "text": "Kilde B: En fagartikkel hos NDLA om platebevegelser (oppdatert 2025) forklarer at kontinenter som kolliderer, bygger fjellkjeder, mens vulkanske øybuer særlig er knyttet til subduksjon mellom to havbunnsplater."
+      },
+      {
+        "type": "text",
+        "text": "Kilde C: Figur 2 i denne prøven viser symmetrisk fordeling av havbunnsalder. Den er konstruert som øvelsesmodell, ikke målt."
+      },
+      {
+        "type": "text",
+        "text": "a) Vurder den faglige påstanden i kilde A ved å bruke relevant geologi. (4 p)"
+      },
+      {
+        "type": "text",
+        "text": "b) Drøft minst to styrker og to begrensninger ved å bruke B og C som kilder. Forklar hvilke ekstra geografiske data eller metoder du ville brukt for å undersøke påstandene i virkeligheten. (6 p)"
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "title": "Oppgave 9  –  Den norske berggrunnen    [10 p]",
+    "points": 10,
+    "items": [
+      {
+        "type": "text",
+        "text": "Norsk berggrunn deles ofte inn i grunnfjellet, kambrosilur, den kaledonske foldesonen, Oslofeltet og kontinentalsokkelen."
+      },
+      {
+        "type": "text",
+        "text": "a) Velg TRE av de fem. Plasser dem geografisk så presist du kan, og forklar en viktig dannelsesprosess for hvert område. (6 p)"
+      },
+      {
+        "type": "text",
+        "text": "b) Sammenlign TO av områdene: Hvordan kan bergartene fortelle ulike geologiske historier? Knytt svaret til minst én indre kraft og én ytre prosess. (4 p)"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "title": "Oppgave 10  –  Samlet drøfting: jordskjelvet i Japan 2011    [15 p]",
+    "points": 15,
+    "items": [
+      {
+        "type": "text",
+        "text": "11. mars 2011 rammet et svært kraftig jordskjelv havområdet øst for nordøstlige Japan. USGS oppgir Mw 9,1, episenter omtrent 38,3°N og 142,4°Ø og dybde om lag 29 km. Japans meteorologiske institutt (JMA) oppgir Mw 9,0 i sitt eget kataloggrunnlag. Skjelvet utløste en ødeleggende tsunami. Bruk figur 3 og kildekortet."
+      },
+      {
+        "type": "text",
+        "text": "a) Lag en sammenhengende årsakskjede fra platetektonikk til jordskjelv, bevegelse av havbunnen og tsunami. Forklar hva som er avgjørende for at en tsunami oppstår. (6 p)"
+      },
+      {
+        "type": "text",
+        "text": "b) Drøft hvorfor konsekvensene for mennesker, infrastruktur og natur kan bli forskjellige fra sted til sted, selv om skjelvet er det samme. Nevn minst to relevante forhold som påvirker sårbarhet. (4 p)"
+      },
+      {
+        "type": "text",
+        "text": "c) Vurder hvilke kart, målinger og andre kilder en geograf bør kombinere for å undersøke hendelsen og konsekvensene. Kommenter hvorfor USGS og JMA kan oppgi ulike magnituder uten at én nødvendigvis er «useriøs». (5 p)"
+      },
+      {
+        "type": "figure",
+        "text": "Figur 3: Kart med USGS-episenter og skjematisk plategrense.",
+        "file": "japan_kart.png"
+      },
+      {
+        "type": "text",
+        "text": "Oppgitt datagrunnlag for oppgave 10: USGS, M 9.1 – 2011 Great Tohoku Earthquake; Japan Meteorological Agency, Information on the 2011 Great East Japan Earthquake."
+      },
+      {
+        "type": "text",
+        "text": "Kildeadresser: earthquake.usgs.gov/earthquakes/eventpage/usc0001xgp  |  jma.go.jp/jma/en/2011_Earthquake/Information_on_2011_Earthquake.html"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Kilde",
+            "Bidrag",
+            "Begrensning"
+          ],
+          [
+            "USGS",
+            "Episenter, Mw, dybde og mekanisme",
+            "Usikkerhet i målinger og modeller; ikke full oversikt over lokale skader"
+          ],
+          [
+            "JMA",
+            "Jordskjelvdata, intensitet og tsunamiadvarsler",
+            "Ulike kataloger, metoder og revisjoner kan gi andre tall"
+          ]
+        ]
+      }
+    ]
+  }
+]
