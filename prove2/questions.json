@@ -1,0 +1,445 @@
+{
+  "version": 1,
+  "images": {
+    "earth": {
+      "url": "https://commons.wikimedia.org/wiki/File:Earth_internal_structure.png",
+      "label": "Jordas indre lag – USGS",
+      "credit": "USGS / Wikimedia Commons",
+      "license": "Public domain"
+    },
+    "plates": {
+      "url": "https://commons.wikimedia.org/wiki/File:Tectonic_plate_boundaries.svg",
+      "label": "Verdenskart med plategrenser og vulkanområder",
+      "credit": "Astroskiandhike / Wikimedia Commons",
+      "license": "CC BY-SA 4.0"
+    },
+    "ocean": {
+      "url": "https://commons.wikimedia.org/wiki/File:Earth%27s_seafloor_age.png",
+      "label": "Kart over havbunnens alder",
+      "credit": "Scientific visualisation / Wikimedia Commons",
+      "license": "Se lisens på originalsiden"
+    },
+    "subduction": {
+      "url": "https://commons.wikimedia.org/wiki/File:Ocean-continent_subduction_zone.gif",
+      "label": "Subduksjon under et kontinent – USGS",
+      "credit": "USGS / Wikimedia Commons",
+      "license": "Public domain"
+    },
+    "epicenter": {
+      "url": "https://commons.wikimedia.org/wiki/File:Epicenter_Diagram.svg",
+      "label": "Forskjellen på fokus og episenter",
+      "credit": "Sam Hocevar mfl. / Wikimedia Commons",
+      "license": "CC BY-SA / GFDL – se original"
+    },
+    "hotspot": {
+      "url": "https://commons.wikimedia.org/wiki/File:Hawaii_hotspot_cross-sectional_diagram.jpg",
+      "label": "Hawaii-hotspot og søylestrøm – USGS",
+      "credit": "Joel E. Robinson / USGS",
+      "license": "Public domain"
+    },
+    "shield": {
+      "url": "https://commons.wikimedia.org/wiki/File:Shield_volcano_unlabelled.svg",
+      "label": "Tverrsnitt av en skjoldvulkan",
+      "credit": "Niamh O'C / Wikimedia Commons",
+      "license": "CC BY-SA 3.0"
+    },
+    "strato": {
+      "url": "https://commons.wikimedia.org/wiki/File:Stratovolcano.png",
+      "label": "Oppbygning av en stratovulkan",
+      "credit": "Marcolam308 / Wikimedia Commons",
+      "license": "CC BY-SA 4.0"
+    },
+    "rocks": {
+      "url": "https://commons.wikimedia.org/wiki/File:Rock_cycle_nps.PNG",
+      "label": "Bergartenes kretsløp – National Park Service",
+      "credit": "NPS / Wikimedia Commons",
+      "license": "Public domain"
+    }
+  },
+  "questions": [
+    {
+      "number": 1,
+      "topic": "Jordas oppbygning",
+      "question": "Hvilken del av jordas indre er i hovedsak flytende?",
+      "options": [
+        "Den indre kjernen",
+        "Den ytre kjernen",
+        "Den nederste mantelen",
+        "Jordskorpa"
+      ],
+      "image": "earth"
+    },
+    {
+      "number": 2,
+      "topic": "Jordas oppbygning",
+      "question": "Hvilken beskrivelse av litosfæren er mest presis?",
+      "options": [
+        "Bare kontinentalskorpa",
+        "Hele mantelen",
+        "Jordskorpa og den øverste, stive delen av mantelen",
+        "Den flytende ytre kjernen"
+      ],
+      "image": "earth"
+    },
+    {
+      "number": 3,
+      "topic": "Jordas oppbygning",
+      "question": "Hvorfor kan litosfæreplatene bevege seg over astenosfæren?",
+      "options": [
+        "Astenosfærens bergarter kan deformeres langsomt selv om de i hovedsak er faste",
+        "Astenosfæren er et stort hav av vann",
+        "Litosfæren flyter på flytende jern",
+        "Tyngdekraften virker ikke på platene"
+      ],
+      "image": "earth"
+    },
+    {
+      "number": 4,
+      "topic": "Jordas oppbygning",
+      "question": "Hva er platetrekk (slab pull)?",
+      "options": [
+        "En tung havbunnsplate som synker i en subduksjonssone, trekker resten av platen med seg",
+        "Vulkanske gasser som skyver platene fra hverandre",
+        "Bølger som trekker havbunnen mot kysten",
+        "Jordrotasjonen som trekker kontinentene østover"
+      ],
+      "image": null
+    },
+    {
+      "number": 5,
+      "topic": "Platetektonikk",
+      "question": "Hva var et viktig bevis som støttet teorien om at kontinentene tidligere hang sammen i Pangea?",
+      "options": [
+        "Alle land har likt klima i dag",
+        "Kontinentenes kystlinjer er rette",
+        "Jordskjelv skjer bare i Europa",
+        "Like fossiler og sammenhengende bergarter på kontinenter som nå er adskilt"
+      ],
+      "image": null
+    },
+    {
+      "number": 6,
+      "topic": "Platetektonikk",
+      "question": "På verdenskartet med plategrenser: Hva skjer langs vestkysten av Sør-Amerika?",
+      "options": [
+        "Sør-Amerika glir under Nazcaplaten",
+        "Nazcaplaten går ned under Sør-Amerika og bidrar til vulkaner og Andesfjellene",
+        "To kontinenter glir fra hverandre",
+        "Ingen aktive plateprosesser finner sted der"
+      ],
+      "image": "plates"
+    },
+    {
+      "number": 7,
+      "topic": "Platetektonikk",
+      "question": "Hva viser alderskartet for havbunnen ved en vanlig midthavsrygg?",
+      "options": [
+        "Eldst havbunn finnes midt på ryggen",
+        "Yngst havbunn finnes nær spredningsaksen",
+        "Alle havbunnsbergarter har samme alder",
+        "Kontinental berggrunn er alltid yngre enn havbunnen"
+      ],
+      "image": "ocean"
+    },
+    {
+      "number": 8,
+      "topic": "Platetektonikk",
+      "question": "En havbunnsbergart er 6 millioner år gammel og ligger 120 km fra en spredningsakse. Omtrent hvor fort har én side av havbunnen beveget seg?",
+      "options": [
+        "0,2 cm per år",
+        "1 cm per år",
+        "2 cm per år",
+        "20 cm per år"
+      ],
+      "image": "ocean"
+    },
+    {
+      "number": 9,
+      "topic": "Platetektonikk",
+      "question": "Hvorfor er Island spesielt vulkansk aktivt?",
+      "options": [
+        "Øya ligger både ved den midtatlantiske spredningsryggen og over en hotspot",
+        "Øya ligger mellom to kolliderende kontinentalskorper",
+        "Øya er bygget utelukkende av sedimentære bergarter",
+        "Øya ligger i en stor dyphavsgrop"
+      ],
+      "image": null
+    },
+    {
+      "number": 10,
+      "topic": "Platetektonikk",
+      "question": "Når en kontinentalplate strekkes og sprekker opp, hvilken landform kan først utvikles?",
+      "options": [
+        "En dyphavsgrop",
+        "En riftdal",
+        "En vulkansk øybue",
+        "En koralløy"
+      ],
+      "image": null
+    },
+    {
+      "number": 11,
+      "topic": "Platetektonikk",
+      "question": "Hva forklarer best dannelsen av Himalaya?",
+      "options": [
+        "To havbunnsplater glir fra hverandre",
+        "En hotspot danner en serie øyer",
+        "En havbunnsplate subduserer under en annen havbunnsplate",
+        "To kontinentale jordskorper kolliderer og presses sammen"
+      ],
+      "image": "plates"
+    },
+    {
+      "number": 12,
+      "topic": "Platetektonikk",
+      "question": "Hvordan dannes en vulkansk øybue som Marianene?",
+      "options": [
+        "Havbunnen spres på begge sider av en kontinental riftdal",
+        "Et kontinent glir sidelengs langs et annet",
+        "Én havbunnsplate synker under en annen, og magma danner vulkanøyer",
+        "Bare erosjon av gamle fjell danner en buet øyrekke"
+      ],
+      "image": null
+    },
+    {
+      "number": 13,
+      "topic": "Platetektonikk",
+      "question": "Hva er den mest typiske kombinasjonen ved subduksjon mellom havbunnsplate og kontinentalplate?",
+      "options": [
+        "Dyphavsgrop utenfor kysten og vulkanske fjell på kontinentet",
+        "Midthavsrygg og helt ny havbunn i kollisjonssonen",
+        "Bare riftdal uten vulkaner",
+        "Ingen jordskjelv, fordi bevegelsen er jevn"
+      ],
+      "image": "subduction"
+    },
+    {
+      "number": 14,
+      "topic": "Platetektonikk",
+      "question": "Ved en glidegrense beveger to plater seg sidelengs. Hva er mest typisk?",
+      "options": [
+        "Alltid store stratovulkaner",
+        "Havbunnen blir nydannet overalt",
+        "Kontinentene smelter sammen",
+        "Jordskjelv langs forkastninger, uten at det nødvendigvis dannes vulkaner"
+      ],
+      "image": "plates"
+    },
+    {
+      "number": 15,
+      "topic": "Naturfarer",
+      "question": "Hvordan er episenteret plassert i forhold til jordskjelvets fokus (sentrum)?",
+      "options": [
+        "Alltid i jordas indre kjerne",
+        "Alltid ute i havet",
+        "På jordoverflaten rett over fokus",
+        "På den motsatte siden av jorda"
+      ],
+      "image": "epicenter"
+    },
+    {
+      "number": 16,
+      "topic": "Naturfarer",
+      "question": "Hvilket utsagn om seismograf og momentmagnitudeskalaen er riktig?",
+      "options": [
+        "Begge betegner en målestasjon",
+        "En seismograf registrerer rystelser, mens Mw uttrykker størrelsen på skjelvet basert på seismisk moment",
+        "Mw måler bare skadeomfang på bygninger",
+        "En seismograf gjør det mulig å forutsi tidspunkt for neste skjelv sikkert"
+      ],
+      "image": "epicenter"
+    },
+    {
+      "number": 17,
+      "topic": "Naturfarer",
+      "question": "Omtrent hvor mange ganger mer energi frigjør et skjelv med Mw 7 enn et med Mw 6?",
+      "options": [
+        "32 ganger",
+        "2 ganger",
+        "10 ganger",
+        "1000 ganger"
+      ],
+      "image": null
+    },
+    {
+      "number": 18,
+      "topic": "Naturfarer",
+      "question": "Hva må vanligvis skje for at et kraftig undersjøisk jordskjelv skal lage en stor tsunami?",
+      "options": [
+        "Det må regne kraftig samme dag",
+        "Det må være en hotspot i nærheten",
+        "Skjelvet må ha minst fem etterskjelv",
+        "Havbunnen og vannmassene må forskyves betydelig, ofte vertikalt"
+      ],
+      "image": null
+    },
+    {
+      "number": 19,
+      "topic": "Naturfarer",
+      "question": "To byer ligger omtrent like langt fra et jordskjelvs episenter. Hvorfor kan skadene bli svært ulike?",
+      "options": [
+        "Momentmagnituden er alltid ulik i de to byene",
+        "Byer over fast fjell forsterker alltid rystelsene mest",
+        "Byggeforskrifter, grunnforhold og befolkningstetthet påvirker sårbarheten",
+        "Episenteret flytter seg til byen med størst skade"
+      ],
+      "image": null
+    },
+    {
+      "number": 20,
+      "topic": "Naturfarer",
+      "question": "Hvorfor blir øyene i Hawaii-øyrekken generelt eldre lenger bort fra den aktive hotspoten?",
+      "options": [
+        "Den eldre havbunnen beveger seg mot en ny midthavsrygg",
+        "Havbunnsplaten flytter seg over en forholdsvis stasjonær varmekilde",
+        "Alle eldre øyer er dannet ved kontinentkollisjon",
+        "Øyer er alltid yngst der det er mest erosjon"
+      ],
+      "image": "hotspot"
+    },
+    {
+      "number": 21,
+      "topic": "Naturfarer",
+      "question": "Hvilken beskrivelse passer best for en skjoldvulkan?",
+      "options": [
+        "Bred og slak form, ofte dannet av lettflytende basaltisk lava",
+        "Bratt vulkan bygget bare av aske",
+        "Alltid dannet ved kontinent–kontinent-kollisjon",
+        "En vulkan uten mulighet for lavautbrudd"
+      ],
+      "image": "shield"
+    },
+    {
+      "number": 22,
+      "topic": "Naturfarer",
+      "question": "Hva gjør at stratovulkaner ofte kan få mer eksplosive utbrudd enn skjoldvulkaner?",
+      "options": [
+        "De mangler magma",
+        "De ligger aldri ved plategrenser",
+        "Mer tyktflytende magma kan holde tilbake gass og bygge opp trykk",
+        "De har alltid lavere temperatur enn jordskorpa"
+      ],
+      "image": "strato"
+    },
+    {
+      "number": 23,
+      "topic": "Naturfarer",
+      "question": "Hva er den viktigste forskjellen mellom en hotspot og en vulkansk øybue?",
+      "options": [
+        "Hotspoter finnes bare i havet, mens øybuer finnes bare på land",
+        "Øybuer oppstår alltid ved midthavsrygger",
+        "Hotspoter dannes alltid ved to kontinentale plater",
+        "Hotspot-vulkanisme kan foregå midt på en plate; vulkanske øybuer er vanligvis knyttet til subduksjon"
+      ],
+      "image": "hotspot"
+    },
+    {
+      "number": 24,
+      "topic": "Berggrunnen",
+      "question": "En bergart har store, synlige korn av kvarts, feltspat og glimmer. Hvilken bergart og type er mest sannsynlig?",
+      "options": [
+        "Basalt – dagbergart",
+        "Granitt – dypbergart",
+        "Sandstein – sedimentær bergart",
+        "Marmor – metamorf bergart"
+      ],
+      "image": null
+    },
+    {
+      "number": 25,
+      "topic": "Berggrunnen",
+      "question": "Magma størkner i en sprekk under jordoverflaten. Hva kalles bergarten som dannes ut fra hvor den størknet?",
+      "options": [
+        "Gangbergart",
+        "Dagbergart",
+        "Metamorf bergart",
+        "Sedimentær bergart"
+      ],
+      "image": null
+    },
+    {
+      "number": 26,
+      "topic": "Berggrunnen",
+      "question": "Hvorfor har basalt ofte små mineralkorn?",
+      "options": [
+        "Fordi steinen alltid dannes av gamle skjell",
+        "Fordi den blir presset sammen til leire",
+        "Fordi lavaen størkner forholdsvis raskt ved jordoverflaten",
+        "Fordi alle mineralene har smeltet bort for alltid"
+      ],
+      "image": null
+    },
+    {
+      "number": 27,
+      "topic": "Berggrunnen",
+      "question": "En bergart har tydelige lag og består av sandkorn som er herdet sammen. Hvilken er det sannsynligvis?",
+      "options": [
+        "Gneis",
+        "Granitt",
+        "Gabbro",
+        "Sandstein"
+      ],
+      "image": null
+    },
+    {
+      "number": 28,
+      "topic": "Berggrunnen",
+      "question": "Hvilket par viser en riktig omdanning gjennom metamorfose?",
+      "options": [
+        "Basalt → sand ved størkning",
+        "Kalkstein → marmor ved varme og trykk",
+        "Grus → granitt ved avsetning",
+        "Magma → leirskifer ved smelting"
+      ],
+      "image": null
+    },
+    {
+      "number": 29,
+      "topic": "Berggrunnen",
+      "question": "En bergart har tydelige bånd og har blitt utsatt for høyt trykk og temperatur uten å smelte. Hvilket svar passer best?",
+      "options": [
+        "Gneis – metamorf bergart",
+        "Basalt – dagbergart",
+        "Konglomerat – sedimentær bergart",
+        "Sand – magmatisk bergart"
+      ],
+      "image": null
+    },
+    {
+      "number": 30,
+      "topic": "Berggrunnen",
+      "question": "Hvilken påstand om bergartenes kretsløp er mest presis?",
+      "options": [
+        "Alle bergarter må gjennom de samme trinnene i bestemt rekkefølge",
+        "Bare sedimentære bergarter kan bli omdannet",
+        "En metamorf bergart må alltid bli magmatisk før den kan forvitre",
+        "Bergarter kan ta flere veier, blant annet fra magmatisk direkte til metamorf"
+      ],
+      "image": "rocks"
+    },
+    {
+      "number": 31,
+      "topic": "Norges geologi",
+      "question": "Hva ble en sentral følge av kollisjonen som dannet den kaledonske fjellkjeden?",
+      "options": [
+        "Hele Norge ble dekket av en ny havbunnsrygg",
+        "Den indre kjernen ble flytende",
+        "Store bergartsmasser ble foldet, skjøvet og omdannet ved trykk og varme",
+        "All norsk berggrunn ble til kalkstein"
+      ],
+      "image": null
+    },
+    {
+      "number": 32,
+      "topic": "Norges geologi",
+      "question": "Hva kjennetegner dannelsen av Oslofeltet?",
+      "options": [
+        "En stor vulkansk øybue fra havbunn–havbunn-subduksjon",
+        "Oppsprekking og innsynking av jordskorpa med magmatisk aktivitet",
+        "En moderne kollisjon mellom to store kontinentale plater",
+        "En ren isbreavsetning uten indre krefter"
+      ],
+      "image": null
+    }
+  ]
+}
