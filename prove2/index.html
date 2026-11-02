@@ -23,9 +23,52 @@
  <div class="results-eyebrow">PRØVE 2 ER LEVERT</div>
  <h2>Ditt resultat</h2>
  <div class="score" id="score"></div><p id="score-detail" class="score-detail"></p>
+ <figure id="result-animation" class="result-animation" hidden>
+   <img id="result-animation-image" alt="" width="560" height="560" loading="eager" decoding="async">
+   <figcaption id="result-animation-caption"></figcaption>
+ </figure>
  <p id="email-status"></p>
  <p class="results-intro">Du har fått riktig svar og faglige forklaringer etter hvert spørsmål. Her er totalscoren din.</p>
 
 </section>
 <footer>Faglig grunnlag: lærerens presentasjoner, Terra Nova og NDLA. Bildene åpnes på de opprinnelige kildesidene med lisens og opphavsperson.</footer>
-</main><script src="config.js"></script><script src="app.js"></script></body></html>
+</main><script src="config.js"></script><script src="app.js"></script>
+<script>
+/* Resultatanimasjoner – berører ikke svarlagring eller Google Sheets. */
+(()=>{'use strict';
+  const choices=[
+    {max:25,key:'under25',text:'Under 25 % – Oi, dette ble en vulkansk utfordring! Prøv igjen og lær av forklaringene.'},
+    {max:50,key:'25-50',text:'25–49 % – Tsunamien kom brått på. Du har et godt utgangspunkt for et nytt forsøk.'},
+    {max:75,key:'50-75',text:'50–74 % – Du kom deg gjennom jordskredet! Fortsett å øve på det som var vanskelig.'},
+    {max:100,key:'75-99',text:'75–99 % – På toppen av fjellet! Sterk geografikunnskap.'},
+    {max:101,key:'100',text:'100 % – Geografimester! Du har hele verden i din hånd.'}
+  ];
+  const wrap=document.getElementById('result-animation');
+  const img=document.getElementById('result-animation-image');
+  const caption=document.getElementById('result-animation-caption');
+  const score=document.getElementById('score');
+  const results=document.getElementById('results');
+  if(!wrap||!img||!caption||!score||!results)return;
+  let selected='';
+  img.addEventListener('error',()=>{wrap.hidden=true;});
+  const update=()=>{
+    if(results.hidden)return;
+    const match=(score.textContent||'').replace(',','.').match(/(\d+(?:\.\d+)?)\s*%/);
+    if(!match)return;
+    const pct=Number(match[1]);
+    if(!Number.isFinite(pct)||pct<0||pct>100)return;
+    const tier=choices.find(c=>pct<c.max);
+    if(!tier)return;
+    caption.textContent=tier.text;
+    if(selected!==tier.key){
+      selected=tier.key;
+      img.src='assets/results/'+tier.key+'.webp';
+      img.alt=tier.text;
+    }
+    wrap.hidden=false;
+  };
+  new MutationObserver(update).observe(score,{subtree:true,childList:true,characterData:true});
+  new MutationObserver(update).observe(results,{attributes:true,attributeFilter:['hidden']});
+  update();
+})();
+</script></body></html>
